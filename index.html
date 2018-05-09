@@ -1,0 +1,42 @@
+<html>
+  <head>
+   </head>
+  <body>
+  	<div id="sketch"></div>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
+  	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script> -->
+	<script>
+		function preload() {
+				myFont = loadFont('../fonts/blue-highway-d.ttf');
+			}
+
+			function setup() {
+			    createCanvas(windowWidth, windowHeight);
+			  	// background(255);
+			  	textFont(myFont);
+				textAlign(LEFT,TOP);
+				// canvas.parent('sketch');
+			}
+
+			function windowResized() {
+			  	resizeCanvas(windowWidth, windowHeight);
+			}
+
+			function draw() {
+				clear();
+				fill(0);
+				// line(0, mouseY, 100, mouseY);
+				quad(windowWidth, mouseY, windowWidth, 0, 0, 0, 0, mouseY);
+				textSize(windowHeight/35);
+				text("pull down",windowWidth/2 - textWidth('pull down')/2, windowHeight/6);
+				
+
+				textSize(windowWidth/4);
+				fill(255);
+				text("EXIT",windowWidth/2 - textWidth('EXIT')/2,windowHeight/3);
+				textSize(windowHeight/35);
+				text("When: Wednesday @ 10:00 PM\nWhere: Clark III - 221\nWhy: ___________ ",windowWidth/10, windowHeight - windowHeight/6);
+			}
+	</script>
+  </body>
+</html>
