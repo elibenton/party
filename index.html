@@ -3,19 +3,19 @@
    </head>
   <body>
   	<div id="sketch"></div>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.min.js"></script>
-  	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/addons/p5.dom.js"></script> -->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
 	<script>
 		function preload() {
 				myFont = loadFont('../fonts/blue-highway-d.ttf');
 			}
 
 			function setup() {
-			    createCanvas(windowWidth, windowHeight);
-			  	// background(255);
+			    var canvas = createCanvas(window.innerWidth,window.innerHeight);
+			  	background(255);
 			  	textFont(myFont);
 				textAlign(LEFT,TOP);
-				// canvas.parent('sketch');
+				canvas.parent('sketch');
 			}
 
 			function windowResized() {
