@@ -8,6 +8,8 @@
 	<script>
 		function preload() {
 				myFont = loadFont('../fonts/blue-highway-d.ttf');
+				soundFormats('mp3');
+  				//mySound = loadSound('exit.mp3');
 			}
 
 			function setup() {
@@ -16,6 +18,8 @@
 			  	textFont(myFont);
 				textAlign(LEFT,TOP);
 				canvas.parent('sketch');
+				// mySound.setVolume(1);
+  		// 		mySound.play();
 			}
 
 			function windowResized() {
@@ -26,9 +30,10 @@
 				clear();
 				fill(0);
 				// line(0, mouseY, 100, mouseY);
-				quad(windowWidth, mouseY, windowWidth, 0, 0, 0, 0, mouseY);
+				quad(mouseX , 0, windowWidth, 0, mouseX, windowHeight, 0, windowHeight);
+				// quad(windowWidth, mouseY, windowWidth, 0, 0, 0, 0, mouseY);
 				textSize(windowHeight/35);
-				text("pull down",windowWidth/2 - textWidth('pull down')/2, windowHeight/6);
+				// text("pull down",windowWidth/2 - textWidth('pull down')/2, windowHeight/6);
 				
 
 				textSize(windowWidth/4);
