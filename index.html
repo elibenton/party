@@ -2,12 +2,14 @@
   <head>
    </head>
   <body>
-  	<div id="sketch"></div>
+  	<div id="sketch" style="overflow-x:auto; width: 100%; position: fixed;"></div>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.js"></script>
 
 	<script>
+    let change = 0;
+
 		function preload() {
 				myFont = loadFont('../fonts/blue-highway-d.ttf');
 				soundFormats('mp3');
@@ -28,15 +30,18 @@
 			  	resizeCanvas(windowWidth, windowHeight);
 			}
 
+
+
 			function draw() {
 				clear();
-				fill(random(0, 255), random(0, 255), random(0, 255));
-				// line(0, mouseY, 100, mouseY);
-				quad(mouseX , 0, windowWidth, 0, mouseX, windowHeight, 0, windowHeight);
-				// quad(windowWidth, mouseY, windowWidth, 0, 0, 0, 0, mouseY);
-				textSize(windowHeight/35);
-				// text("pull down",windowWidth/2 - textWidth('pull down')/2, windowHeight/6);
+        fill(0);
+        text("scroll down", windowWidth/2 - textWidth('scroll down')/2, windowHeight/5.5);
 
+        fill(random(0, 255), random(0, 255), random(0, 255));
+        noStroke();
+
+        quad(0,0,change/2,0,change/2,windowHeight, 0,windowHeight);
+        quad(windowWidth - change/2,0,windowWidth - change/2,windowHeight, windowWidth,windowHeight, windowWidth,0,);
 
 				textSize(windowWidth/6);
 				fill(255);
@@ -46,6 +51,14 @@
 				textSize(windowHeight/35);
 				text("When: Friday @ 10 PM\nWhere: Clark 419",windowWidth/10, windowHeight - windowHeight/6);
 			}
+
+      function mouseWheel(event) {
+        console.log(event.delta);
+        //move the square according to the vertical scroll amount
+        change += event.delta;
+        //uncomment to block page scrolling
+        //return false;
+      }
 	</script>
   </body>
 </html>
