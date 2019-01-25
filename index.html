@@ -9,6 +9,7 @@
 
 	<script>
     let change = 0;
+    let value = 0;
 
 		function preload() {
 				myFont = loadFont('../fonts/blue-highway-d.ttf');
@@ -40,8 +41,8 @@
         fill(random(0, 255), random(0, 255), random(0, 255));
         noStroke();
 
-        quad(0,0,change/2,0,change/2,windowHeight, 0,windowHeight);
-        quad(windowWidth - change/2,0,windowWidth - change/2,windowHeight, windowWidth,windowHeight, windowWidth,0,);
+        quad(0,0,value/2,0,value/2,windowHeight, 0,windowHeight);
+        quad(windowWidth - value/2,0,windowWidth - value/2,windowHeight, windowWidth,windowHeight, windowWidth,0,);
 
 				textSize(windowWidth/6);
 				fill(255);
@@ -52,12 +53,21 @@
 				text("When: Friday @ 10 PM\nWhere: Clark 419",windowWidth/10, windowHeight - windowHeight/6);
 			}
 
+
       function mouseWheel(event) {
         console.log(event.delta);
         //move the square according to the vertical scroll amount
         change += event.delta;
         //uncomment to block page scrolling
         //return false;
+      }
+
+      function touchMoved() {
+        value = value + 30;
+
+        if (value > windowHeight) {
+          value = 0;
+        }
       }
 	</script>
   </body>
