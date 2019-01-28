@@ -8,7 +8,7 @@ class TodoApp extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  render() {
+  render() { 
     return React.createElement(
       "div",
       null,
