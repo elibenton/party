@@ -12,22 +12,20 @@
 		<script>
 			let change = 0
 			let value = 0
-			// let myImg
 
 			function preload() {
-				//myFont = loadFont('../fonts/blue-highway-d.ttf');
+				// myFont = loadFont('../fonts/blue-highway-d.ttf');
 				// soundFormats('mp3')
 				// mySound = loadSound('exit2.mp3')
-				// myImg = loadImage('void1.gif')
 			}
 
 			function setup() {
 				var canvas = createCanvas(window.innerWidth, window.innerHeight)
-				// background(255)
-				//textFont(myFont);
 				textAlign(LEFT, TOP)
-				// image(myImage, 0, 0, windowWidth, windowHeight)
 				canvas.parent('sketch')
+
+				//textFont(myFont);
+
 				// mySound.setVolume(1.0)
 				// mySound.play()
 
@@ -47,32 +45,12 @@
 			}
 
 			function draw() {
-				clear()
-				// fill(0)
-				// text(
-				// 	'scroll down',
-				// 	windowWidth / 2 - textWidth('scroll down') / 2,
-				// 	windowHeight / 5.5
-				// )
+				fill(0)
+				stroke(255)
 
-				// fill(random(0, 255), random(0, 255), random(0, 255))
-
-				noStroke()
-				// circle(windowWidth / 2, windowHeight / 2, value)
-				quad(0, 0, value / 2, 0, value / 2, windowHeight, 0, windowHeight)
-				quad(
-					windowWidth - value / 2,
-					0,
-					windowWidth - value / 2,
-					windowHeight,
-					windowWidth,
-					windowHeight,
-					windowWidth,
-					0
-				)
+				// circle(windowWidth / 2, windowHeight / 2, 500)
 
 				textSize(windowWidth / 10)
-				fill(random(0, 255), random(0, 255), random(0, 255))
 				text(
 					'DOWN THE VOID',
 					windowWidth / 2 - textWidth('DOWN THE VOID') / 2,
@@ -86,14 +64,15 @@
 				)
 				textSize(windowHeight / 30)
 				text(
-					'December 14 @ 10 PM\n🌲🏠',
+					'December 14 @ 10 PM',
 					windowWidth / 10,
 					windowHeight - windowHeight / 6
 				)
+				textSize(windowHeight / 20)
+				text('🌲🏠', windowWidth / 10, windowHeight - windowHeight / 7.8)
 			}
 
 			function mouseWheel(event) {
-				console.log(event.delta)
 				//move the square according to the vertical scroll amount
 				value += event.delta
 				//uncomment to block page scrolling
@@ -102,7 +81,6 @@
 
 			function touchMoved() {
 				value += 20
-
 				if (value > windowHeight * 1.4) {
 					value = 0
 				}
