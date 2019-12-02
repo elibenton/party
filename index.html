@@ -1,74 +1,112 @@
 <html>
-  <head>
-   </head>
-  <body>
-  	<div id="sketch" style="overflow-x:auto; width: 100%; position: fixed;"></div>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.js"></script>
+	<head> </head>
+	<body>
+		<div
+			id="sketch"
+			style="overflow-x:auto; width: 100%; position: fixed;"
+		></div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.js"></script>
 
-	<script>
-    let change = 0;
-    let value = 0;
+		<script>
+			let change = 0
+			let value = 0
+			// let myImg
 
-		function preload() {
+			function preload() {
 				//myFont = loadFont('../fonts/blue-highway-d.ttf');
-				soundFormats('mp3');
-  				mySound = loadSound('exit2.mp3');
+				// soundFormats('mp3')
+				// mySound = loadSound('exit2.mp3')
+				// myImg = loadImage('void1.gif')
 			}
 
 			function setup() {
-			    var canvas = createCanvas(window.innerWidth,window.innerHeight);
-			  	background(255);
-			  	//textFont(myFont);
-				textAlign(LEFT,TOP);
-				canvas.parent('sketch');
-				mySound.setVolume(1.0);
-  				mySound.play();
+				var canvas = createCanvas(window.innerWidth, window.innerHeight)
+				// background(255)
+				//textFont(myFont);
+				textAlign(LEFT, TOP)
+				// image(myImage, 0, 0, windowWidth, windowHeight)
+				canvas.parent('sketch')
+				// mySound.setVolume(1.0)
+				// mySound.play()
+
+				// VIDEO BACKGROUND
+				vid = createVideo(['void.mp4'], vidLoad)
+				vid.size(windowWidth, windowHeight)
+			}
+
+			function vidLoad() {
+				vid.loop()
+				vid.volume(0)
 			}
 
 			function windowResized() {
-			  	resizeCanvas(windowWidth, windowHeight);
+				resizeCanvas(windowWidth, windowHeight)
+				vid.size(windowWidth, windowHeight)
 			}
-
-
 
 			function draw() {
-				clear();
-        fill(0);
-        text("scroll down", windowWidth/2 - textWidth('scroll down')/2, windowHeight/5.5);
+				clear()
+				// fill(0)
+				// text(
+				// 	'scroll down',
+				// 	windowWidth / 2 - textWidth('scroll down') / 2,
+				// 	windowHeight / 5.5
+				// )
 
-        fill(random(0, 255), random(0, 255), random(0, 255));
-        noStroke();
+				// fill(random(0, 255), random(0, 255), random(0, 255))
 
-        quad(0,0,value/2,0,value/2,windowHeight, 0,windowHeight);
-        quad(windowWidth - value/2,0,windowWidth - value/2,windowHeight, windowWidth,windowHeight, windowWidth,0,);
+				noStroke()
+				// circle(windowWidth / 2, windowHeight / 2, value)
+				quad(0, 0, value / 2, 0, value / 2, windowHeight, 0, windowHeight)
+				quad(
+					windowWidth - value / 2,
+					0,
+					windowWidth - value / 2,
+					windowHeight,
+					windowWidth,
+					windowHeight,
+					windowWidth,
+					0
+				)
 
-				textSize(windowWidth/6);
-				fill(255);
-				text("BEGINNING", windowWidth/2 - textWidth('ENTRANCE')/2, windowHeight/5);
-        textSize(windowWidth/10);
-        text("OF THE END", windowWidth/2 - textWidth('ENTRANCE')/2, windowHeight/5 + textSize()*2);
-				textSize(windowHeight/30);
-				text("When: TONIGHT @ 10 PM\nWhere: Clark 419\nWhy: ¯\u005c_(ツ)_/¯",windowWidth/10, windowHeight - windowHeight/6);
+				textSize(windowWidth / 10)
+				fill(random(0, 255), random(0, 255), random(0, 255))
+				text(
+					'DOWN THE VOID',
+					windowWidth / 2 - textWidth('DOWN THE VOID') / 2,
+					windowHeight / 5
+				)
+				textSize(windowWidth / 12)
+				text(
+					'WE GO',
+					windowWidth / 2 - textWidth('WE GO') / 2,
+					windowHeight / 5 + textSize() * 2
+				)
+				textSize(windowHeight / 30)
+				text(
+					'December 14 @ 10 PM\n🌲🏠',
+					windowWidth / 10,
+					windowHeight - windowHeight / 6
+				)
 			}
 
+			function mouseWheel(event) {
+				console.log(event.delta)
+				//move the square according to the vertical scroll amount
+				value += event.delta
+				//uncomment to block page scrolling
+				return false
+			}
 
-      function mouseWheel(event) {
-        console.log(event.delta);
-        //move the square according to the vertical scroll amount
-        value += event.delta;
-        //uncomment to block page scrolling
-        return false;
-      }
+			function touchMoved() {
+				value += 20
 
-      function touchMoved() {
-        value += 20;
-
-        if (value > windowHeight * 1.4) {
-          value = 0;
-        }
-      }
-	</script>
-  </body>
+				if (value > windowHeight * 1.4) {
+					value = 0
+				}
+			}
+		</script>
+	</body>
 </html>
