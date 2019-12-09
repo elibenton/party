@@ -1,47 +1,72 @@
+<!DOCTYPE HTML>
 <html>
-	<head> </head>
+	<head>
+		<style>
+			/* Style the video: 100% width and height to cover the entire window */
+			#background-video {
+				position: fixed;
+				right: 0;
+				bottom: 0;
+				min-width: 100%;
+				min-height: 100%;
+			}
+		</style>
+	</head>
 	<body>
+		 <!-- onclick="play()" -->
+		<!-- Background video -->
+		<!-- Using video with audio included to hopefully avoid loading problem -->
+		<video autoplay loop id="background-video">
+		  <source src="party_w_music_LQ.mp4" type="video/mp4">
+		</video>
+
 		<div
 			id="sketch"
 			style="overflow-x:auto; width: 100%; position: fixed;"
 		></div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.js"></script> -->
 
 		<script>
 			let change = 0
 			let value = 0
+			// let sound;
+			// var audio = new Audio("intro.mp3")
 
 			function preload() {
-				// myFont = loadFont('../fonts/blue-highway-d.ttf');
+				myFont = loadFont('../fonts/blue-highway-d.ttf');
 				// soundFormats('mp3')
 				// mySound = loadSound('exit2.mp3')
+				// sound = loadSound('intro.mp3');
 			}
 
 			function setup() {
 				var canvas = createCanvas(window.innerWidth, window.innerHeight)
+				// sound.loop()
 				textAlign(LEFT, TOP)
 				canvas.parent('sketch')
 
-				//textFont(myFont);
+				textFont(myFont);
 
 				// mySound.setVolume(1.0)
 				// mySound.play()
 
+				// change: moved video stuff to html
 				// VIDEO BACKGROUND
-				vid = createVideo(['void.mp4'], vidLoad)
-				vid.size(windowWidth, windowHeight)
+				// added diff formats for diff browser rendering
+				// vid = createVideo(['blinking_void.mp4', 'blinking_void.webm', 'blinking_void.ogv'], vidLoad)
+				// vid.size(windowWidth, windowHeight)
 			}
 
-			function vidLoad() {
-				vid.loop()
-				vid.volume(0)
-			}
+			// function vidLoad() {
+				// vid.loop()
+				// vid.volume(0)
+			// }
 
 			function windowResized() {
 				resizeCanvas(windowWidth, windowHeight)
-				vid.size(windowWidth, windowHeight)
+				// vid.size(windowWidth, windowHeight)
 			}
 
 			function draw() {
@@ -50,26 +75,26 @@
 
 				// circle(windowWidth / 2, windowHeight / 2, 500)
 
-				textSize(windowWidth / 10)
+				textSize(windowWidth / 8)
 				text(
 					'DOWN THE VOID',
 					windowWidth / 2 - textWidth('DOWN THE VOID') / 2,
 					windowHeight / 5
 				)
-				textSize(windowWidth / 12)
+				textSize(windowWidth / 11)
 				text(
 					'WE GO',
 					windowWidth / 2 - textWidth('WE GO') / 2,
 					windowHeight / 5 + textSize() * 2
 				)
-				textSize(windowHeight / 30)
+				textSize(windowHeight / 20)
 				text(
 					'December 14 @ 10 PM',
 					windowWidth / 10,
 					windowHeight - windowHeight / 6
 				)
-				textSize(windowHeight / 20)
-				text('🌲🏠', windowWidth / 10, windowHeight - windowHeight / 7.8)
+				textSize(windowHeight / 25)
+				text('treehouse', windowWidth / 10, windowHeight - windowHeight / 9)
 			}
 
 			function mouseWheel(event) {
@@ -85,6 +110,15 @@
 					value = 0
 				}
 			}
+
+			// super hack-y attempt to get some on-click audio loops
+			// function play(){
+			// 	var i = 0;
+			// 	while (i < 10) {
+			// 		audio.play();
+			// 		i++;
+				// }
+      // }
 		</script>
 	</body>
 </html>
