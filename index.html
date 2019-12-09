@@ -10,22 +10,47 @@
 				min-width: 100%;
 				min-height: 100%;
 			}
+
+			#splashscreen {
+			    position:absolute;
+			    top:0;
+			    left:0;
+			    bottom:0;
+			    width:100%;
+			    background-color:white;
+			}
+
+			#mainpage {
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
+
+		<div id="splashscreen">
+    <h2>Welcome to the void</h2>
+		<button type="button" class="enter_link">Do not go gentle into that good night</button>
+		<button type="button" class="enter_link">Go gentle into that good night</button>
+		</div>
+
 		 <!-- onclick="play()" -->
 		<!-- Background video -->
 		<!-- Using video with audio included to hopefully avoid loading problem -->
-		<video autoplay loop id="background-video">
-		  <source src="party_w_music_LQ.mp4" type="video/mp4">
-		</video>
+		<div id="mainpage">
+				<video autoplay loop id="background-video">
+				  <source src="party_w_music_LQ.mp4" type="video/mp4">
+				</video>
 
-		<div
-			id="sketch"
-			style="overflow-x:auto; width: 100%; position: fixed;"
-		></div>
+				<div
+					id="sketch"
+					style="overflow-x:auto; width: 100%; position: fixed;"
+				></div>
+		</div>
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/p5.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.dom.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.10/addons/p5.sound.js"></script> -->
 
 		<script>
@@ -110,6 +135,14 @@
 					value = 0
 				}
 			}
+
+			$('.enter_link').click(function(e){
+		    $('#splashscreen').fadeOut('slow', function(){
+		        $('#mainpage').fadeIn('slow');
+		    });
+			});
+
+
 
 			// super hack-y attempt to get some on-click audio loops
 			// function play(){
