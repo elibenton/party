@@ -34,14 +34,13 @@
 		    line-height: 200px;
 		    margin-top: -140px; */
 				font-size: 6em;
+				width: 90;
 			}
 
 			#main_text {
-				font-size: 11em;
+				font-size: 12em;
 				font-family: 'Courier New';
 				text-align: center;
-				/* display: inline-block; */
-				/* width: 40%; */
 				top: 55%;
 				justify-content: center;
 				-webkit-text-stroke: 2px white;
@@ -52,7 +51,7 @@
 				font-weight: 800;
 				font-family: 'Courier New';
 				text-align: left;
-				width: 40%;
+				width: 50%;
 				top: 80%;
 				justify-content: center;
 				-webkit-text-stroke: 1px white;
@@ -83,16 +82,26 @@
 				background-color: blue;
 				color: white;
 			}
+
+			@media screen and (max-width: 767px) {
+				#main_text {
+					font-size: 6em;
+				}
+				#main_text_details {
+					position: absolute;
+					bottom: 80vh;
+				}
+			}
 		</style>
 	</head>
 	<body>
 		<div id="splashscreen">
 			<h1 id="welcome_text">WELCOME TO THE VOID</h1>
 			<div class="enter_buttons">
-				<button id="red" type="button" onclick="play()" class="enter_link">
+				<button id="blue" type="button" onclick="play()" class="enter_link">
 					Go gentle into that good night
 				</button>
-				<button id="blue" type="button" onclick="play()" class="enter_link">
+				<button id="red" type="button" onclick="play()" class="enter_link">
 					Do not go gentle into that good night
 				</button>
 			</div>
