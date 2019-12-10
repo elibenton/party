@@ -5,10 +5,12 @@
 			/* Style the video: 100% width and height to cover the entire window */
 			#background-video {
 				position: fixed;
-				right: 0;
+				left: 0;
 				bottom: 0;
 				min-width: 100%;
 				min-height: 100%;
+				margin: 0 auto;
+				text-align: center;
 			}
 
 			#splashscreen {
@@ -37,8 +39,13 @@
 				width: 90;
 			}
 
+			#splash_main {
+				overflow-x: auto;
+				position: fixed;
+			}
+
 			#main_text {
-				font-size: 12em;
+				font-size: 10em;
 				font-family: 'Courier New';
 				text-align: center;
 				top: 55%;
@@ -50,12 +57,11 @@
 				font-size: 3em;
 				font-weight: 800;
 				font-family: 'Courier New';
-				text-align: left;
-				width: 50%;
-				top: 80%;
-				justify-content: center;
+				object-position: left bottom;
 				-webkit-text-stroke: 1px white;
-				margin: 0 0 0 2em;
+				margin: 0 0 1em 2em;
+				position: fixed;
+				bottom: 0;
 			}
 
 			button {
@@ -81,16 +87,6 @@
 			#blue:hover {
 				background-color: blue;
 				color: white;
-			}
-
-			@media screen and (max-width: 767px) {
-				#main_text {
-					font-size: 6em;
-				}
-				#main_text_details {
-					position: absolute;
-					bottom: 80vh;
-				}
 			}
 		</style>
 	</head>
@@ -120,11 +116,10 @@
 				<embed src="intro.mp3" autostart="true" loop="true" hidden="true" />
 			</audio>
 
-			<div id="sketch" style="overflow-x:auto; width: 100%; position: fixed;">
+			<div id="splash_main">
 				<h1 id="main_text">DOWN THE VOID WE GO</h1>
-				<!-- <h1 id="main_text">WE GO</h1> -->
-				<h2 id="main_text_details">DECEMBER 14 @ 10</h2>
-				<h2 id="main_text_details">TREEHOUSE</h2>
+				<h2 id="main_text_details">DECEMBER 14 @ 10<br />TREEHOUSE</h2>
+				<h2 id="main_text_details"></h2>
 			</div>
 		</div>
 
