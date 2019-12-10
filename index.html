@@ -18,19 +18,53 @@
 			    bottom:0;
 			    width:100%;
 			    background-color:white;
+					position: absolute;
+			    text-align: center;
+			    top: 30%;
+			    width: 100%;
+					font-family: "Courier New";
 			}
 
 			#mainpage {
 				display: none;
 			}
+
+			#welcome_text {
+		    /* left: 0;
+		    line-height: 200px;
+		    margin-top: -140px; */
+				font-size: 6em;
+			}
+
+			button {
+				background-color: white;
+  			color: black;
+  			border: 2px solid #555555;
+			  padding: 15px 32px;
+			  text-align: center;
+			  text-decoration: none;
+			  display: inline-block;
+			  font-size: 2em;
+				width: 40%;
+				top: 50%;
+				justify-content: center;
+			}
+
+			button:hover {
+			  background-color: #555555;
+			  color: white;
+			}
+
 		</style>
 	</head>
 	<body>
 
 		<div id="splashscreen">
-    <h2>Welcome to the void</h2>
-		<button type="button" class="enter_link">Do not go gentle into that good night</button>
-		<button type="button" class="enter_link">Go gentle into that good night</button>
+    <h1 id="welcome_text">WELCOME TO THE VOID</h1>
+		<div class="enter_buttons">
+				<button type="button" onclick="play()" class="enter_link">Go gentle into that good night</button>
+				<button type="button" onclick="play()" class="enter_link">Do not go gentle into that good night</button>
+		</div>
 		</div>
 
 		 <!-- onclick="play()" -->
@@ -38,8 +72,13 @@
 		<!-- Using video with audio included to hopefully avoid loading problem -->
 		<div id="mainpage">
 				<video autoplay loop id="background-video">
-				  <source src="party_w_music_LQ.mp4" type="video/mp4">
+				  <source src="blinking_void.mp4" type="video/mp4">
 				</video>
+
+				<audio id="audio" loop>
+				  <source src="intro.mp3" type="audio/ogg">
+				  <embed src="intro.mp3" autostart="true" loop="true" hidden="true">
+				</audio>
 
 				<div
 					id="sketch"
@@ -137,12 +176,15 @@
 			}
 
 			$('.enter_link').click(function(e){
-		    $('#splashscreen').fadeOut('slow', function(){
-		        $('#mainpage').fadeIn('slow');
+		    $('#splashscreen').fadeOut('200', function(){
+		        $('#mainpage').fadeIn('600');
 		    });
 			});
 
-
+			function play(){
+				 var audio = document.getElementById("audio");
+				 audio.play();
+			}
 
 			// super hack-y attempt to get some on-click audio loops
 			// function play(){
